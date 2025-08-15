@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-AtlasShader-0009.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Projects\Program\UEProjects\PlugTest\Intermediate\Build\Win64\x64\PlugTestEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"D:\Projects\Program\UEProjects\PlugTest\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\Module.AtlasShader.cpp.obj"
+"D:\Projects\Program\UEProjects\PlugTest\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\AtlasShader.cpp.obj"
+"D:\Projects\Program\UEProjects\PlugTest\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\AtlasShaderBlueprintLibrary.cpp.obj"
+"D:\Projects\Program\UEProjects\PlugTest\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\CustomDataInterface.cpp.obj"
+"D:\Projects\Program\UEProjects\PlugTest\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\MaterialExpressionCustomData.cpp.obj"
+"D:\Projects\Program\UEProjects\PlugTest\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\Default.rc2.res"
+/OUT:"D:\Projects\Program\UEProjects\PlugTest\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\UnrealEditor-AtlasShader-0009.lib"

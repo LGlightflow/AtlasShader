@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-AtlasCVUtil.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\bak\Bak77\Intermediate\Build\Win64\x64\Bak77Editor\Development\UnrealEd\SharedPCH.UnrealEd.Cpp20.h.obj"
+"D:\bak\Bak77\Plugins\AtlasCVUtil\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasCVUtil\AtlasCVUtil.cpp.obj"
+"D:\bak\Bak77\Plugins\AtlasCVUtil\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasCVUtil\Default.rc2.res"
+/OUT:"D:\bak\Bak77\Plugins\AtlasCVUtil\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasCVUtil\UnrealEditor-AtlasCVUtil.lib"

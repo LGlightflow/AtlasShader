@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\bak\\bak77\\plugins\\atlasshader\\source\\atlasshader\\private\\interface\\customdatainterface.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\bak\\bak77\\intermediate\\build\\win64\\x64\\bak77editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\bak\\bak77\\plugins\\atlasshader\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\atlasshader\\definitions.atlasshader.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\source\\atlasshader\\public\\interface\\customdatainterface.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\intermediate\\build\\win64\\unrealeditor\\inc\\atlasshader\\uht\\customdatainterface.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

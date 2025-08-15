@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-AtlasShader-0097.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"E:\Cyberpunk2077BetaSVN20250325\Trunk\Intermediate\Build\Win64\x64\RacingEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.NoValFmtStr.ValApi.Cpp20.InclOrderUnreal5_3.h.obj"
+"E:\Cyberpunk2077BetaSVN20250325\Trunk\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\Module.AtlasShader.cpp.obj"
+"E:\Cyberpunk2077BetaSVN20250325\Trunk\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\AtlasShader.cpp.obj"
+"E:\Cyberpunk2077BetaSVN20250325\Trunk\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\CustomDataMaterialExpression.cpp.obj"
+"E:\Cyberpunk2077BetaSVN20250325\Trunk\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\Default.rc2.res"
+/OUT:"E:\Cyberpunk2077BetaSVN20250325\Trunk\Plugins\AtlasShader\Intermediate\Build\Win64\x64\UnrealEditor\Development\AtlasShader\UnrealEditor-AtlasShader-0097.lib"

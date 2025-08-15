@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\bak\\bak77\\plugins\\atlascvutil\\source\\atlascvutil\\private\\atlascvutil.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\bak\\bak77\\intermediate\\build\\win64\\x64\\bak77editor\\development\\unrealed\\sharedpch.unrealed.cpp20.h.pch",
+        "Includes": [
+            "d:\\bak\\bak77\\plugins\\atlascvutil\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\atlascvutil\\definitions.atlascvutil.h",
+            "d:\\bak\\bak77\\plugins\\atlascvutil\\source\\atlascvutil\\public\\atlascvutil.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

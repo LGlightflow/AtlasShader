@@ -1,0 +1,21 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\bak\\bak77\\plugins\\atlasshader\\source\\atlasshader\\private\\atlasshaderblueprintlibrary.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\bak\\bak77\\intermediate\\build\\win64\\x64\\bak77editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\bak\\bak77\\plugins\\atlasshader\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\atlasshader\\definitions.atlasshader.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\source\\atlasshader\\public\\atlasshaderblueprintlibrary.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\source\\atlasshader\\public\\data\\atlastexturedataasset.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\intermediate\\build\\win64\\unrealeditor\\inc\\atlasshader\\uht\\atlastexturedataasset.generated.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\intermediate\\build\\win64\\unrealeditor\\inc\\atlasshader\\uht\\atlasshaderblueprintlibrary.generated.h",
+            "d:\\ue_5.4\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\assetregistrymodule.h",
+            "d:\\ue_5.4\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\iassetregistry.h",
+            "d:\\ue_5.4\\engine\\source\\runtime\\coreuobject\\public\\misc\\assetregistryinterface.h",
+            "d:\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assetregistry\\uht\\iassetregistry.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

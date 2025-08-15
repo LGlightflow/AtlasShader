@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "e:\\cyberpunk2077betasvn20250325\\trunk\\plugins\\atlasshader\\source\\atlasshader\\private\\materialexpressions\\customdatamaterialexpression.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\cyberpunk2077betasvn20250325\\trunk\\intermediate\\build\\win64\\x64\\racingeditor\\development\\unrealed\\sharedpch.unrealed.project.novalfmtstr.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "Includes": [
+            "e:\\cyberpunk2077betasvn20250325\\trunk\\plugins\\atlasshader\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\atlasshader\\definitions.atlasshader.h",
+            "e:\\cyberpunk2077betasvn20250325\\trunk\\plugins\\atlasshader\\source\\atlasshader\\public\\materialexpressions\\customdatamaterialexpression.h",
+            "e:\\cyberpunk2077betasvn20250325\\trunk\\plugins\\atlasshader\\intermediate\\build\\win64\\unrealeditor\\inc\\atlasshader\\uht\\customdatamaterialexpression.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

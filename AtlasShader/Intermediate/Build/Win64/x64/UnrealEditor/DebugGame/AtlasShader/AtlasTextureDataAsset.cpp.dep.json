@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\bak\\bak77\\plugins\\atlasshader\\source\\atlasshader\\private\\data\\atlastexturedataasset.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\bak\\bak77\\intermediate\\build\\win64\\x64\\bak77editor\\debuggame\\unrealed\\sharedpch.unrealed.project.nonoptimized.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\bak\\bak77\\plugins\\atlasshader\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\atlasshader\\definitions.atlasshader.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\source\\atlasshader\\public\\data\\atlastexturedataasset.h",
+            "d:\\bak\\bak77\\plugins\\atlasshader\\intermediate\\build\\win64\\unrealeditor\\inc\\atlasshader\\uht\\atlastexturedataasset.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
