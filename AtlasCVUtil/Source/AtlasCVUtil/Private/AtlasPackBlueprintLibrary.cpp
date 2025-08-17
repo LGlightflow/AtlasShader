@@ -6,7 +6,7 @@
 #include "Serialization/JsonSerializer.h"
 #include "Data/AtlasTextureDataAsset.h"
 
-void PackMatsIntoAtlases_QuadTree(const TArray<cv::Mat>& Mats, int32 AtlasSize, TArray<cv::Mat>& OutAtlases, TArray<TArray<int32>>& OutAtlasImageLists, TArray<FIntRect>& OutRects)
+void PackMatsIntoAtlases_QuadTree(const TArray<cv::Mat>& Mats, int32 AtlasSize,int32 Padding, TArray<cv::Mat>& OutAtlases, TArray<TArray<int32>>& OutAtlasImageLists, TArray<FIntRect>& OutRects)
 {
 	// init
 	OutAtlases.Empty();
@@ -37,7 +37,7 @@ void PackMatsIntoAtlases_QuadTree(const TArray<cv::Mat>& Mats, int32 AtlasSize, 
 		for (int32 idx : Remaining)
 		{
 			const cv::Mat& ImgRGBA = Mats[idx]; // assume RGBA
-			cv::Size s(ImgRGBA.cols, ImgRGBA.rows);
+			cv::Size s(ImgRGBA.cols + Padding * 2, ImgRGBA.rows + Padding * 2);
 
 			FPackNode* Node = Root.Insert(s);
 			if (!Node)
@@ -61,9 +61,10 @@ void PackMatsIntoAtlases_QuadTree(const TArray<cv::Mat>& Mats, int32 AtlasSize, 
 			}
 
 			cv::Rect r = Node->Rect;
-			ImgBGRA.copyTo(Atlas(r));
+			cv::Rect inner(r.x + Padding, r.y + Padding, ImgBGRA.cols, ImgBGRA.rows);
+			ImgBGRA.copyTo(Atlas(inner));
 
-			OutRects[idx] = FIntRect(r.x, r.y, r.width, r.height);
+			OutRects[idx] = FIntRect(inner.x, inner.y, inner.x + inner.width, inner.y + inner.height);
 			PlacedIndices.Add(idx);
 		}
 
@@ -73,7 +74,7 @@ void PackMatsIntoAtlases_QuadTree(const TArray<cv::Mat>& Mats, int32 AtlasSize, 
 		Remaining = MoveTemp(NextRemaining);
 	}
 }
-//TODO: 传软引用路径
+
 bool UAtlasPackBlueprintLibrary::WriteAtlasJsonToFile(const FString& SaveDir, const TArray<cv::Mat>& Atlases, const TArray<TArray<int32>>& AtlasImageLists, const TArray<FIntRect>& ImageRects, const TArray<FString>& ImageNames)
 {
 	TSharedPtr<FJsonObject> RootObj = MakeShared<FJsonObject>();
@@ -136,9 +137,10 @@ bool UAtlasPackBlueprintLibrary::WriteAtlasJsonToFile(const FString& SaveDir, co
 	FString JsonPath = FPaths::Combine(SaveDir, TEXT("atlas_layout.json"));
 	return FFileHelper::SaveStringToFile(OutputString, *JsonPath);
 }
-// TODO: 法线 mask等
-// TODO: 需要将图集引用保存到data asset中
-TArray<UTexture2D*>  UAtlasPackBlueprintLibrary::CombineTexturesToAtlas(const TArray<UTexture2D*>& Textures, UAtlasTextureDataAsset* OutDataAsset, bool bSavePNG, bool bSaveJSON, const FString& SaveDirectory, int32 AtlasSize, TextureMipGenSettings MipGenSetting)
+
+
+TArray<UTexture2D*>  UAtlasPackBlueprintLibrary::CombineTexturesToAtlas(const TArray<UTexture2D*>& Textures, UAtlasTextureDataAsset* OutDataAsset, bool bSavePNG, bool bSaveJSON, const FString& SaveDirectory, int32 AtlasSize, int Padding, TextureMipGenSettings MipGenSetting, bool bSRGB,
+	TextureCompressionSettings CompressionSetting)
 {
 	TArray<UTexture2D*> AtlasTextures;
 	if (Textures.Num() == 0) return AtlasTextures;
@@ -179,7 +181,7 @@ TArray<UTexture2D*>  UAtlasPackBlueprintLibrary::CombineTexturesToAtlas(const TA
 	TArray<FIntRect> ImageRects; 
 	ImageRects.Init(FIntRect(-1, -1, 0, 0), Mats.Num());
 
-	PackMatsIntoAtlases_QuadTree(Mats, AtlasSize, Atlases, AtlasesImageLists, ImageRects);
+	PackMatsIntoAtlases_QuadTree(Mats, AtlasSize,Padding, Atlases, AtlasesImageLists, ImageRects);
 
 	// 3) write atlases PNGs to disk and create transient UTexture2D, fill OutDataAsset
 	FString FullSaveDir = SaveDirectory;
@@ -213,8 +215,9 @@ TArray<UTexture2D*>  UAtlasPackBlueprintLibrary::CombineTexturesToAtlas(const TA
 		if (!NewTex) continue;
 		NewTex->NeverStream = true;
 		NewTex->MipGenSettings = MipGenSetting;
-		NewTex->SRGB = false;
-		NewTex->CompressionSettings = TC_Default;
+
+		NewTex->SRGB = bSRGB;
+		NewTex->CompressionSettings = CompressionSetting;
 
 		FTexture2DMipMap& Mip0 = NewTex->GetPlatformData()->Mips[0];
 		void* Dest = Mip0.BulkData.Lock(LOCK_READ_WRITE);
@@ -264,4 +267,41 @@ TArray<UTexture2D*>  UAtlasPackBlueprintLibrary::CombineTexturesToAtlas(const TA
 
 	// 5) return first created texture (or nullptr)
 	return AtlasTextures;
+}
+
+
+void UAtlasPackBlueprintLibrary::RebindAtlasTexturesFromPaths(
+	UAtlasTextureDataAsset* InDataAsset,
+	const TArray<FSoftObjectPath>& AtlasTexturePaths)
+{
+	if (!InDataAsset) return;
+
+	// 简单安全检查
+	if (AtlasTexturePaths.Num() != InDataAsset->AtlasTextureMappings.Num())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("RebindAtlasTexturesFromPaths: Path count != Mapping count"));
+	}
+
+	for (int32 i = 0; i < InDataAsset->AtlasTextureMappings.Num(); i++)
+	{
+		if (!AtlasTexturePaths.IsValidIndex(i)) continue;
+
+		const FSoftObjectPath& Path = AtlasTexturePaths[i];
+		UObject* Obj = Path.TryLoad(); // 同步加载资源
+
+		if (!Obj)
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to load texture from path: %s"), *Path.ToString());
+			continue;
+		}
+
+		UTexture2D* LoadedTex = Cast<UTexture2D>(Obj);
+		if (!LoadedTex)
+		{
+			UE_LOG(LogTemp, Error, TEXT("Path is not a UTexture2D: %s"), *Path.ToString());
+			continue;
+		}
+
+		InDataAsset->AtlasTextureMappings[i].AtlasTexture = LoadedTex;
+	}
 }

@@ -11,12 +11,14 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class UAtlasTextureDataAsset;
 class UTexture2D;
+struct FSoftObjectPath;
 #ifdef ATLASCVUTIL_AtlasPackBlueprintLibrary_generated_h
 #error "AtlasPackBlueprintLibrary.generated.h already included, missing '#pragma once' in AtlasPackBlueprintLibrary.h"
 #endif
 #define ATLASCVUTIL_AtlasPackBlueprintLibrary_generated_h
 
 #define FID_bak_Bak77_Plugins_AtlasCVUtil_Source_AtlasCVUtil_Public_AtlasPackBlueprintLibrary_h_66_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execRebindAtlasTexturesFromPaths); \
 	DECLARE_FUNCTION(execCombineTexturesToAtlas);
 
 

@@ -81,5 +81,11 @@ public:
 		bool bSaveJSON,  
 		const FString& SaveDirectory,                // local folder to write png/json
 		int32 AtlasSize = 1024,
-		TextureMipGenSettings MipGenSetting = TMGS_Sharpen4 );
+		int Padding = 1,
+		TextureMipGenSettings MipGenSetting = TMGS_Sharpen4,
+		bool bSRGB = true,
+		TextureCompressionSettings CompressionSetting = TC_Default);
+
+	UFUNCTION(BlueprintCallable)
+	static void RebindAtlasTexturesFromPaths(UAtlasTextureDataAsset* InDataAsset, const TArray<FSoftObjectPath>& AtlasTexturePaths);
 };
