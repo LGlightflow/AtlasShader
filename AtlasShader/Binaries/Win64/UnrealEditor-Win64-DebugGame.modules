@@ -2,6 +2,7 @@
 	"BuildId": "33043543",
 	"Modules": 
 	{
+		"AtlasCVUtil": "UnrealEditor-AtlasCVUtil-Win64-DebugGame.dll",
 		"AtlasShader": "UnrealEditor-AtlasShader-Win64-DebugGame.dll"
 	}
 }

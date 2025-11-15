@@ -19,6 +19,17 @@
 			"Name": "AtlasShader",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "AtlasCVUtil",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
 		}
-	]
+	],
+		
+	"Plugins": [
+	{
+		"Name": "UnAuVi",
+		"Enabled": true
+	},]
 }
